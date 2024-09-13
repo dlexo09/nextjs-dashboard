@@ -7,15 +7,17 @@ import {
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
+import { createInvoice } from '@/app/lib/actions';
+
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
   return (
-    <form>
+    <form action={createInvoice} >
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
           <label htmlFor="customer" className="mb-2 block text-sm font-medium">
-            Choose customer
+            Cliente
           </label>
           <div className="relative">
             <select
@@ -25,7 +27,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
               defaultValue=""
             >
               <option value="" disabled>
-                Select a customer
+                Selecciona un cliente
               </option>
               {customers.map((customer) => (
                 <option key={customer.id} value={customer.id}>
@@ -105,7 +107,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
         >
           Cancel
         </Link>
-        <Button type="submit">Create Invoice</Button>
+        <Button type="submit">Crear factura</Button>
       </div>
     </form>
   );
